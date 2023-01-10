@@ -1,0 +1,21 @@
+<VirtualHost *>
+   ServerName example.com
+   ServerAlias www.example.com
+   ServerAdmin example@gmail.com
+   DocumentRoot /var/www/www.example.com/html/
+
+   ScriptAlias /cgi-bin/ /usr/lib/cgi-bin/
+   #Options ExecCGI -MultiViews +SymLinksIfOwnerMatch
+
+   SetEnvIf Request_URI ".(jpg|jpeg|png|swf|css|gif|dat|ico|js)$" dontlog
+   SetEnvIf Request_URI "/cron/" dontlog
+   CustomLog /var/log/apache2/www.example.com-access.log combined env=!dontlog
+   ErrorLog /var/log/apache2/www.example.com-error.log
+   AddType application/x-httpd-php .html
+   <Directory /var/www/www.example.com/html/>
+      Options -Indexes
+      AllowOverride All
+      Order Allow,Deny
+      Allow From All
+   </Directory>
+</VirtualHost>
