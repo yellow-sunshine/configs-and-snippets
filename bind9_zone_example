@@ -1,0 +1,25 @@
+$TTL	604800
+@	IN	SOA	ns1.yellow-sunshine.com. root.yellow-sunshine.com. (
+			10	; Serial
+			3h	; Refresh
+			15	; Retry
+			1w	; Expire
+			3h)	; Negative Cache TTL
+
+; NS records
+			IN  NS  ns1.yellow-sunshine.com.
+			IN  NS  ns2.yellow-sunshine.com.
+
+; A records
+@						  IN  A   10.0.0.10
+ns1						IN  A   10.0.0.11
+ns2						IN  A   10.0.0.12
+italy					IN  A   10.0.0.14
+colombia			IN  A   10.0.0.15
+
+; CNAME records
+www			  IN	CNAME	yellow-sunshine.com.
+rome			IN	CNAME	italy.yellow-sunshine.com.
+torino		IN	CNAME	italy.yellow-sunshine.com.
+medellin	IN	CNAME	colombia.yellow-sunshine.com.
+bogota		IN	CNAME	colombia.yellow-sunshine.com.
